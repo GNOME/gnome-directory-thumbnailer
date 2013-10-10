@@ -1,0 +1,71 @@
+Formatting
+==========
+
+All code should follow the same formatting standards which are broadly based on the GNU style (http://www.gnu.org/prep/standards.html) with some
+additions. Briefly:
+
+ - Tab indents are used and braces for blocks go on the same line as the block statement:
+
+	if (x < foo (y, z)) {
+		haha = bar[4] + 5;
+	} else {
+		while (z) {
+			haha += foo (z, z);
+			z--;
+		}
+		return abc (haha);
+	}
+
+   Braces should be omitted for single-line blocks, but included for all blocks in a multi-part if statement which has blocks containing more than
+   one line (as above).
+
+ - Spaces should be present between function name and argument block, and after commas:
+
+	foo (z, z)
+
+ - In pointer types, the '*' is grouped with the variable name, not with the base type. 
+
+	int *a;
+
+   Not:
+
+	int* a;
+
+   In cases where there is no variable name, for instance, return values, there should be a single space between the base type and the '*'.
+
+   Type casts should have no space between the type and '*', but a space before the variable being cast:
+
+	(gchar*) foobar;
+	(gchar**) &foobar;
+
+ - Function and variable names are lower_case_with_underscores, type names are CamelCase and macro names are UPPER_CASE_WITH_UNDERSCORES.
+
+ - Comparisons to NULL, TRUE and FALSE should always be made explicit, for clarity.
+
+ - Code should be wrapped at the 150th column, such that it doesn't require horizontal scrolling on a decent-sized display.
+   Don't wrap at the 80th column.
+
+Commit messages
+===============
+
+gnome-directory-thumbnailer does not use a ChangeLog; it is auto-generated from the git log when packaging a release. Commit messages should follow the GNOME commit
+message guidelines (http://live.gnome.org/Git/CommitMessages), with the exception that when a commit closes a bug, the short explanation of the commit
+should simply be the bug's title, as copied from Bugzilla (e.g. "Bug 579885 – Add code examples to documentation"). The long explanation should then
+be used to give details of the changes. If the bug's title is not relevant, it should be changed before committing the changes.
+
+Unless the short explanation of a commit is a bug title, it should always be prefixed by a tag to describe the part of the library it touches, using
+the following format "tag: Short explanation". The following tags are valid:
+
+ - core: for the core code in the src directory, such as the main application.
+
+ - build: for build changes and releases.
+
+ - docs: for documentation changes such as updates to the docs directory, NEWS, README, this file, etc.
+
+The only commits which should not have a tag are translation commits, touching only the po directory.
+
+Versioning
+==========
+
+gnome-directory-thumbnailer uses an even–odd/stable–unstable versioning policy, where odd minor version numbers are unstable releases,
+released periodically (with increasing micro version numbers) and leading to a stable release with the next even minor version number.

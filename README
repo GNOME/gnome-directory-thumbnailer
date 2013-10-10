@@ -1,0 +1,35 @@
+gnome-directory-thumbnailer
+===========================
+
+gnome-directory-thumbnailer is a GNOME thumbnailer utility which will generate
+a thumbnail for a directory. It is intended to be called by gnome-desktop’s
+thumbnailer code, but can be called manually as well.
+
+Usage
+=====
+
+Basic usage:
+ $ gnome-directory-thumbnailer path/to/directory output-thumbnail.png
+
+Specifying the maximum thumbnail dimensions:
+ $ gnome-directory-thumbnailer dir out.png -s 200
+This allows the maximum height and width to be specified (in pixels).
+
+Dependencies
+============
+
+ • glib-2.0 ≥ 2.35.0
+ • gio-2.0 ≥ 2.22.0
+ • gdk-pixbuf-2.0 ≥ 2.6.0
+ • gnome-desktop-3.0 ≥ 2.2.0
+
+Licensing
+=========
+
+gnome-directory-thumbnailer is licensed under the GPL; see COPYING for more
+details.
+
+Contact
+=======
+
+Philip Withnall <philip.withnall@collabora.co.uk>
