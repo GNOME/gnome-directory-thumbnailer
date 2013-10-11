@@ -106,13 +106,14 @@ calculate_file_interestingness (GFileInfo *file_info, GFile *file, GnomeDesktopT
 		DEC (5);
 	}
 
-	/* Weight un-thumbnailable files a lot less. */
+	/* Weight un-thumbnailable files or files with a valid failed thumbnail a lot less. */
 	file_uri = g_file_get_uri (file);
 	g_file_info_get_modification_time (file_info, &file_mtime);
 	file_mime_type = g_content_type_get_mime_type (g_file_info_get_content_type (file_info));
 
-	if (gnome_desktop_thumbnail_factory_can_thumbnail (factory, file_uri, file_mime_type, file_mtime.tv_sec) == FALSE) {
-		DEC (10);
+	if (gnome_desktop_thumbnail_factory_has_valid_failed_thumbnail (factory, file_uri, file_mtime.tv_sec) == TRUE ||
+	    gnome_desktop_thumbnail_factory_can_thumbnail (factory, file_uri, file_mime_type, file_mtime.tv_sec) == FALSE) {
+		DEC (20);
 	}
 
 	g_free (file_uri);
