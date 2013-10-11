@@ -173,20 +173,24 @@ pick_interesting_file_for_directory (GFile *input_directory, GFileInfo **file_in
 		if (g_file_info_get_file_type (file_info) == G_FILE_TYPE_SYMBOLIC_LINK) {
 			const gchar *symlink_target;
 			GFile *symlink_target_file;
+			gboolean is_directory;
 
 			symlink_target = g_file_info_get_symlink_target (file_info);
 			symlink_target_file = g_file_get_child (input_directory, symlink_target);
+			is_directory = (g_file_query_file_type (symlink_target_file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY);
+
+			g_object_unref (symlink_target_file);
 
 			g_debug ("Checking target ‘%s’ for symlink ‘%s’.", symlink_target, g_file_info_get_name (file_info));
 
-			if (g_file_query_file_type (symlink_target_file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY) {
+			if (is_directory == TRUE) {
 				g_debug ("Skipping file ‘%s’ as it’s a symlink to a directory, and could cause an infinite loop.", g_file_info_get_name (file_info));
-				g_object_unref (symlink_target_file);
+
+				g_object_unref (file_info);
 				g_object_unref (file);
+
 				continue;
 			}
-
-			g_object_unref (symlink_target_file);
 		}
 
 		/* Is this file more interesting than the most interesting one we've seen so far? */
@@ -209,7 +213,7 @@ pick_interesting_file_for_directory (GFile *input_directory, GFileInfo **file_in
 				g_debug ("Interestingness reached maximum of %u. Breaking out with most interesting file ‘%s’.", MAX_FILE_INTERESTINGNESS, g_file_get_path (interesting_file));
 
 				g_object_unref (file_info);
-				g_object_unref (file_info);
+				g_object_unref (file);
 
 				break;
 			}
@@ -238,6 +242,7 @@ done:
 
 	if (file_info_out != NULL) {
 		*file_info_out = interesting_file_info;  /* transfer ownership */
+		interesting_file_info = NULL;
 	} else {
 		g_clear_object (&interesting_file_info);
 	}
@@ -483,6 +488,7 @@ main (int argc, char *argv[])
 			scaled_pixbuf = gnome_desktop_thumbnail_scale_down_pixbuf (pixbuf, scaled_width, scaled_height);
 			g_object_unref (pixbuf);
 			pixbuf = scaled_pixbuf;  /* transfer ownership */
+			scaled_pixbuf = NULL;
 		}
 	}
 
