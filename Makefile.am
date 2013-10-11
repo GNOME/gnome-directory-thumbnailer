@@ -41,6 +41,7 @@ src_gnome_directory_thumbnailer_LDADD = \
 # Thumbnailer file
 thumbnailersdir = $(datadir)/thumbnailers
 thumbnailers_DATA = src/gnome-directory-thumbnailer.thumbnailer
+EXTRA_DIST += $(thumbnailers_DATA)
 
 # Cleaning
 EXTRA_DIST += \
