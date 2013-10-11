@@ -88,10 +88,12 @@ calculate_file_interestingness (GFileInfo *file_info, GFile *file, GnomeDesktopT
 		case G_FILE_TYPE_SHORTCUT:
 			INC (20);
 			break;
-		case G_FILE_TYPE_DIRECTORY:
 		case G_FILE_TYPE_SPECIAL:
 		case G_FILE_TYPE_MOUNTABLE:
 			INC (10);
+			break;
+		case G_FILE_TYPE_DIRECTORY:
+			INC (5);
 			break;
 		case G_FILE_TYPE_UNKNOWN:
 		default:
