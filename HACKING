@@ -58,6 +58,8 @@ the following format "tag: Short explanation". The following tags are valid:
 
  - core: for the core code in the src directory, such as the main application.
 
+ - heuristics: for the heuristics in calculate_file_interestingness() in main.c.
+
  - build: for build changes and releases.
 
  - docs: for documentation changes such as updates to the docs directory, NEWS, README, this file, etc.
