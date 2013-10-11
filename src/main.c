@@ -55,7 +55,7 @@
 static gint output_size = -1; /* pixels */
 static gchar **filenames = NULL; /* needs to be freed with g_strfreev() */
 
-#define MAX_FILE_INTERESTINGNESS 100
+#define MAX_FILE_INTERESTINGNESS 21
 
 /**
  * calculate_file_interestingness:
@@ -67,6 +67,7 @@ static gchar **filenames = NULL; /* needs to be freed with g_strfreev() */
  * The score is a positive integer, with larger numbers meaning the file is more interesting. The maximum possible score is %MAX_FILE_INTERESTINGNESS.
  *
  * If using new #GFileInfo attributes in this function, don’t forget to update the g_file_enumerate_children() call in pick_interesting_file_for_directory() below.
+ * Also don’t forget to update %MAX_FILE_INTERESTINGNESS. It must be calculated manually every time you change this function.
  *
  * Return value: interestingness score for @file
  */
@@ -201,7 +202,7 @@ pick_interesting_file_for_directory (GFile *input_directory, GFileInfo **file_in
 			g_debug ("Updating most interesting file to ‘%s’ with interestingness %u.", g_file_get_path (interesting_file), interesting_file_interestingness);
 
 			/* If this is the most fantastic, interesting, amazing file we can possibly encounter, bail. */
-			if (interesting_file_interestingness > MAX_FILE_INTERESTINGNESS) {
+			if (interesting_file_interestingness >= MAX_FILE_INTERESTINGNESS) {
 				g_debug ("Interestingness reached maximum of %u. Breaking out with most interesting file ‘%s’.", MAX_FILE_INTERESTINGNESS, g_file_get_path (interesting_file));
 
 				g_object_unref (file_info);
