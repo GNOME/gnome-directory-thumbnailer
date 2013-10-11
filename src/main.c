@@ -56,7 +56,7 @@ static gint output_size = -1; /* pixels */
 static gchar **filenames = NULL; /* needs to be freed with g_strfreev() */
 
 /* Maximum possible interestingness a file could have. See calculate_file_interestingness(). */
-#define MAX_FILE_INTERESTINGNESS 21
+#define MAX_FILE_INTERESTINGNESS 26
 
 /* Default limit on the depth of directory trees which can be recursively thumbnailed. */
 #define DEFAULT_RECURSION_LIMIT 5
@@ -81,6 +81,7 @@ calculate_file_interestingness (GFileInfo *file_info, GFile *file, GnomeDesktopT
 	guint interestingness = 1;
 	GTimeVal file_mtime;
 	gchar *file_uri, *file_mime_type;
+	const gchar *content_type;
 
 #define INC(I) interestingness = CLAMP (((gint64) interestingness) + (I), 1, G_MAXUINT)
 #define DEC(I) INC(-(I))
@@ -122,6 +123,14 @@ calculate_file_interestingness (GFileInfo *file_info, GFile *file, GnomeDesktopT
 
 	g_free (file_uri);
 	g_free (file_mime_type);
+
+	/* Weight image files more than audio files. This covers the case where a directory for an MP3 album contains music
+	 * files without embedded album art, but also contains the album art as an image file. */
+	content_type = g_file_info_get_content_type (file_info);
+
+	if (g_str_has_prefix (content_type, "image/") == TRUE) {
+		INC (5);
+	}
 
 #undef DEC
 #undef INC
