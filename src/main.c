@@ -55,7 +55,11 @@
 static gint output_size = -1; /* pixels */
 static gchar **filenames = NULL; /* needs to be freed with g_strfreev() */
 
+/* Maximum possible interestingness a file could have. See calculate_file_interestingness(). */
 #define MAX_FILE_INTERESTINGNESS 21
+
+/* Default limit on the depth of directory trees which can be recursively thumbnailed. */
+#define DEFAULT_RECURSION_LIMIT 5
 
 /**
  * calculate_file_interestingness:
@@ -263,13 +267,18 @@ done:
  *
  * In case of error, @error will be set to a %G_FILE_ERROR or %GDK_PIXBUF_ERROR and %NULL will be returned.
  *
+ * Note that this may result in recursive calls to other thumbnailers, or even to gnome-directory-thumbnailer, if the @file_uri is a subdirectory.
+ * Infinite recursion is prevented by ignoring symlink directory loops (in pick_interesting_file_for_directory()) and also by imposing a hard limit
+ * on the recursion depth by using the <code class="literal">GNOME_DIRECTORY_THUMBNAILER_RECURSION_LIMIT</code> environment variable. This means that
+ * long chains of subdirectories (which are not in a loop) will not get thumbnailed, but that’s probably OK.
+ *
  * Return value: pixbuf representing the thumbnail for the given file, or %NULL on error
  */
 static GdkPixbuf *
 copy_thumbnail_from_file (GnomeDesktopThumbnailFactory *factory, const gchar *file_uri, const GTimeVal *file_mtime, const gchar *file_mime_type, GError **error)
 {
 	gchar *thumbnail_path;
-	GdkPixbuf *pixbuf;
+	GdkPixbuf *pixbuf = NULL;
 
 	thumbnail_path = gnome_desktop_thumbnail_factory_lookup (factory, file_uri, file_mtime->tv_sec);
 
@@ -278,11 +287,42 @@ copy_thumbnail_from_file (GnomeDesktopThumbnailFactory *factory, const gchar *fi
 	if (thumbnail_path == NULL) {
 		/* No thumbnail exists for the file. Try and generate one. */
 		if (gnome_desktop_thumbnail_factory_can_thumbnail (factory, file_uri, file_mime_type, file_mtime->tv_sec) == TRUE) {
-			pixbuf = gnome_desktop_thumbnail_factory_generate_thumbnail (factory, file_uri, file_mime_type);
-			if (pixbuf == NULL) {
-				/* gnome-desktop doesn't set an error so we have to. */
-				g_debug ("Error generating thumbnail.");
-				g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_NOENT, _("Error generating thumbnail for file ‘%s’."), file_uri);
+			/* Set an environment variable to limit the recursion depth. The program can end up recursing if the most interesting child
+			 * of this directory is another directory. Although measures have been taken to avoid symlink directory loops, it’s still
+			 * possible to enter a directory loop using bind mounts. By limiting the recursion depth, this can be avoided. */
+			guint recursion_limit;
+			const gchar *recursion_limit_str;
+			gchar *end_ptr, *new_recursion_limit_str;
+
+			recursion_limit_str = g_getenv ("GNOME_DIRECTORY_THUMBNAILER_RECURSION_LIMIT");
+			if (recursion_limit_str != NULL) {
+				recursion_limit = g_ascii_strtoull (recursion_limit_str, &end_ptr, 10);
+				if (*end_ptr != '\0') {
+					g_warning ("Invalid GNOME_DIRECTORY_THUMBNAILER_RECURSION_LIMIT ‘%s’. Using default of %u instead.", recursion_limit_str, DEFAULT_RECURSION_LIMIT);
+					recursion_limit = DEFAULT_RECURSION_LIMIT;
+				}
+			} else {
+				recursion_limit = DEFAULT_RECURSION_LIMIT;
+			}
+
+			g_debug ("GNOME_DIRECTORY_THUMBNAILER_RECURSION_LIMIT = %u", recursion_limit);
+
+			/* Only recurse if we haven’t hit the limit yet. */
+			if (recursion_limit > 0) {
+				/* Update the recursion limit for any child processes. */
+				new_recursion_limit_str = g_strdup_printf ("%u", recursion_limit - 1);
+				g_setenv ("GNOME_DIRECTORY_THUMBNAILER_RECURSION_LIMIT", new_recursion_limit_str, TRUE);
+				g_free (new_recursion_limit_str);
+
+				pixbuf = gnome_desktop_thumbnail_factory_generate_thumbnail (factory, file_uri, file_mime_type);
+				if (pixbuf == NULL) {
+					/* gnome-desktop doesn't set an error so we have to. */
+					g_debug ("Error generating thumbnail.");
+					g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_NOENT, _("Error generating thumbnail for file ‘%s’."), file_uri);
+				}
+			} else {
+				g_debug ("Didn’t generate thumbnail due to hitting the recursion limit.");
+				g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_NOENT, _("Error generating thumbnail for file ‘%s’: recursion limit reached."), file_uri);
 			}
 		} else {
 			/* Can't generate a thumbnail for this type of file. gnome-desktop doesn't set an error so we have to. */
