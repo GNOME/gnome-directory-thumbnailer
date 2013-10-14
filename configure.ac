@@ -13,7 +13,7 @@ AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_USE_SYSTEM_EXTENSIONS
 
-AM_INIT_AUTOMAKE([1.11 dist-bzip2 no-dist-gzip check-news subdir-objects])
+AM_INIT_AUTOMAKE([1.11 dist-xz no-dist-gzip check-news subdir-objects])
 AM_SILENT_RULES([yes])
 
 AC_PROG_CXX
