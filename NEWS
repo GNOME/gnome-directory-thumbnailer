@@ -2,4 +2,4 @@ Initial release of gnome-directory-thumbnailer 0.1.0
 ====================================================
 
 Major changes:
- • Initial release
+ • Initial release with basic heuristics for thumbnailing directories
