@@ -29,7 +29,14 @@ Licensing
 gnome-directory-thumbnailer is licensed under the LGPL; see COPYING for more
 details.
 
+Bugs
+====
+
+Please report any bugs or enhancement requests in GNOME Bugzilla:
+https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-directory-thumbnailer
+
 Contact
 =======
 
 Philip Withnall <philip.withnall@collabora.co.uk>
+https://wiki.gnome.org/GnomeDirectoryThumbnailer

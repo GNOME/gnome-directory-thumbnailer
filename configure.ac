@@ -5,7 +5,7 @@ m4_define(gdt_version_major, 0)
 m4_define(gdt_version_minor, 1)
 m4_define(gdt_version_micro, 0)
 
-AC_INIT([gnome-directory-thumbnailer],[gdt_version_major.gdt_version_minor.gdt_version_micro],[https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-directory-thumbnailer],[gnome-directory-thumbnailer],[http://wiki.gnome.org/GnomeDirectoryThumbnailer])
+AC_INIT([gnome-directory-thumbnailer],[gdt_version_major.gdt_version_minor.gdt_version_micro],[https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-directory-thumbnailer],[gnome-directory-thumbnailer],[https://wiki.gnome.org/GnomeDirectoryThumbnailer])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
