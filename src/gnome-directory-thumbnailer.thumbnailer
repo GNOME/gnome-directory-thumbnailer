@@ -1,4 +1,4 @@
 [Thumbnailer Entry]
 TryExec=gnome-directory-thumbnailer
-Exec=gnome-directory-thumbnailer %i %o --size %s
+Exec=gnome-directory-thumbnailer %i %o --size %s --show-overlay
 MimeType=inode/directory;
