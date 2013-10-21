@@ -26,6 +26,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
+#include <gtk/gtk.h>
 #include <locale.h>
 #include <math.h>
 
@@ -53,6 +54,7 @@
 
 /* Command line options. */
 static gint output_size = -1; /* pixels */
+static gboolean show_overlay = FALSE;
 static gchar **filenames = NULL; /* needs to be freed with g_strfreev() */
 
 /* Maximum possible interestingness a file could have. See calculate_file_interestingness(). */
@@ -60,6 +62,21 @@ static gchar **filenames = NULL; /* needs to be freed with g_strfreev() */
 
 /* Default limit on the depth of directory trees which can be recursively thumbnailed. */
 #define DEFAULT_RECURSION_LIMIT 5
+
+/* Width and height of the folder icon overlay on generated thumbnails (in pixels).
+ * The *_NORMAL size is for normal-sized thumbnails (up to 128px), and the *_LARGE size is for up to 256px.
+ * These sizes are used if the generated thumbnail is exactly 128px or 256px wide or tall. If it’s smaller,
+ * the overlay will be scaled down proportionally. */
+#define OVERLAY_SIZE_NORMAL 32 /* pixels */
+#define OVERLAY_SIZE_LARGE 64 /* pixels */
+
+/* X and Y offset of the folder icon overlay from the top-left corner of generated thumbnails (in pixels).
+ * As above, the *_NORMAL and *_LARGE variants are for thumbnails up to 128px and 256px, respectively.
+ * As with OVERLAY_SIZE_*, these offsets will be scaled down for non-maximally-sized thumbnails */
+#define OVERLAY_X_NORMAL 4 /* pixels */
+#define OVERLAY_Y_NORMAL 4 /* pixels */
+#define OVERLAY_X_LARGE 8 /* pixels */
+#define OVERLAY_Y_LARGE 8 /* pixels */
 
 /**
  * calculate_file_interestingness:
@@ -428,6 +445,7 @@ save_pixbuf (GdkPixbuf *pixbuf, GFile *output_file, GError **error)
 /* Command line options. */
 static const GOptionEntry entries[] = {
 	{ "size", 's', 0, G_OPTION_ARG_INT, &output_size, N_("Maximum size of the thumbnail in pixels (maximum width or height)"), NULL },
+	{ "show-overlay", 'o', 0, G_OPTION_ARG_NONE, &show_overlay, N_("Show the normal folder icon as an overlay on the thumbnail"), NULL },
 	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, NULL, N_("[INPUT FILE] [OUTPUT FILE]") },
 	{ NULL },
 };
@@ -439,6 +457,7 @@ enum {
 	STATUS_ERROR_GENERATING_THUMBNAIL = 2,
 	STATUS_ERROR_GENERATING_THUMBNAIL_EMPTY_DIRECTORY = 3,
 	STATUS_ERROR_SAVING_THUMBNAIL = 4,
+	STATUS_ERROR_LOADING_OVERLAY = 5,
 };
 
 int
@@ -451,6 +470,7 @@ main (int argc, char *argv[])
 	GdkPixbuf *pixbuf = NULL;
 	GnomeDesktopThumbnailFactory *factory = NULL;
 	GnomeDesktopThumbnailSize thumbnail_size;
+	gint scaled_width, scaled_height;  /* dimensions of the thumbnail after scaling for the --size option */
 
 	/* Localisation */
 	setlocale (LC_ALL, "");
@@ -514,7 +534,7 @@ main (int argc, char *argv[])
 
 	/* Scale the pixbuf down if necessary. */
 	if (output_size != -1) {
-		gint original_width, original_height, scaled_width, scaled_height;
+		gint original_width, original_height;
 		gdouble scale;
 
 		original_width = gdk_pixbuf_get_width (pixbuf);
@@ -539,6 +559,76 @@ main (int argc, char *argv[])
 			pixbuf = scaled_pixbuf;  /* transfer ownership */
 			scaled_pixbuf = NULL;
 		}
+	}
+
+	/* Add the normal folder icon as an overlay if necessary. */
+	if (show_overlay == TRUE) {
+		GtkIconTheme *icon_theme;
+		GdkPixbuf *folder_pixbuf;
+		gint overlay_size, overlay_x, overlay_y;
+		gint scaled_overlay_size, scaled_overlay_x, scaled_overlay_y;
+		gdouble scale;
+
+		/* Re-query the dimensions since we don’t know which dimensions gnome_desktop_thumbnail_scale_down_pixbuf() chose. */
+		scaled_width = gdk_pixbuf_get_width (pixbuf);
+		scaled_height = gdk_pixbuf_get_height (pixbuf);
+
+		g_debug ("Scaled width: %i, height: %i.", scaled_width, scaled_height);
+
+		g_debug ("Adding overlay image.");
+
+		/* Initialise GTK+ just to load the icon. This seems a little wasteful, but there’s no other option. */
+		gtk_init (&argc, &argv);
+
+		switch (thumbnail_size) {
+			case GNOME_DESKTOP_THUMBNAIL_SIZE_NORMAL:
+				overlay_size = OVERLAY_SIZE_NORMAL;
+				overlay_x = OVERLAY_X_NORMAL;
+				overlay_y = OVERLAY_Y_NORMAL;
+				scale = (gdouble) MAX (scaled_width, scaled_height) / 128.0;
+				break;
+			case GNOME_DESKTOP_THUMBNAIL_SIZE_LARGE:
+				overlay_size = OVERLAY_SIZE_LARGE;
+				overlay_x = OVERLAY_X_LARGE;
+				overlay_y = OVERLAY_Y_LARGE;
+				scale = (gdouble) MAX (scaled_width, scaled_height) / 256.0;
+				break;
+			default:
+				g_assert_not_reached ();
+		}
+
+		g_debug ("Overlay size: %i, position: (%i, %i), scale: %f.", overlay_size, overlay_x, overlay_y, scale);
+
+		scaled_overlay_size = overlay_size * scale;
+		scaled_overlay_x = overlay_x * scale;
+		scaled_overlay_y = overlay_y * scale;
+
+		g_debug ("Scaled overlay size: %i, position: (%i, %i).", scaled_overlay_size, scaled_overlay_x, scaled_overlay_y);
+
+		/* Load the theme’s folder icon. */
+		icon_theme = gtk_icon_theme_get_default ();
+		folder_pixbuf = gtk_icon_theme_load_icon (icon_theme, "folder", scaled_overlay_size, 0 /* no flags */, &child_error);
+		g_object_unref (icon_theme);
+
+		if (child_error != NULL) {
+			/* Failed to load the icon. Shame. */
+			g_printerr (_("Couldn’t load folder overlay icon: %s\n"), child_error->message);
+			g_error_free (child_error);
+
+			status = STATUS_ERROR_LOADING_OVERLAY;
+			goto done;
+		}
+
+		/* Overlay it on the thumbnail. */
+		gdk_pixbuf_composite (folder_pixbuf, pixbuf,
+		                      scaled_overlay_x, scaled_overlay_y,  /* destination X, Y */
+		                      scaled_overlay_size, scaled_overlay_size,  /* destination width, height */
+		                      0.0, 0.0,  /* source offset X, Y */
+		                      1.0, 1.0,  /* source scale X, Y */
+		                      GDK_INTERP_BILINEAR,
+		                      255);  /* overall alpha */
+
+		g_object_unref (folder_pixbuf);
 	}
 
 	/* Save it. */

@@ -26,6 +26,7 @@ GLIB_REQS=2.35.0
 GIO_REQS=2.22.0
 GDK_PIXBUF_REQS=2.6.0
 GNOME_DESKTOP_REQS=2.2.0
+GTK_REQS=3.0
 
 # gnome-directory-thumbnailer versioning
 GDT_VERSION_MAJOR=gdt_version_major
@@ -36,7 +37,7 @@ AC_SUBST([GDT_VERSION_MINOR])
 AC_SUBST([GDT_VERSION_MICRO])
 
 # gnome-directory-thumbnailer dependencies
-PKG_CHECK_MODULES(GDT, [gobject-2.0 glib-2.0 >= $GLIB_REQS gio-2.0 >= $GIO_REQS gdk-pixbuf-2.0 >= $GDK_PIXBUF_REQS gnome-desktop-3.0 >= $GNOME_DESKTOP_REQS])
+PKG_CHECK_MODULES(GDT, [gobject-2.0 glib-2.0 >= $GLIB_REQS gio-2.0 >= $GIO_REQS gdk-pixbuf-2.0 >= $GDK_PIXBUF_REQS gtk+-3.0 >= $GTK_REQS gnome-desktop-3.0 >= $GNOME_DESKTOP_REQS])
 
 # Internationalisation
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
