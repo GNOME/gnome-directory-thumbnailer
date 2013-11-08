@@ -5,7 +5,14 @@
          xmlns="http://usefulinc.com/ns/doap#">
 	<name xml:lang="en">gnome-directory-thumbnailer</name>
 	<shortdesc xml:lang="en">GNOME thumbnailer to generate thumbnails for directories</shortdesc>
+	<description xml:lang="en">
+		gnome-directory-thumbnailer is a GNOME thumbnailer utility which will generate
+		a thumbnail for a directory. It is intended to be called by gnome-desktop’s
+		thumbnailer code, but can be called manually as well.
+	</description>
 	<homepage rdf:resource="https://wiki.gnome.org/GnomeDirectoryThumbnailer" />
+	<download-page rdf:resource="http://download.gnome.org/sources/gnome-directory-thumbnailer/" />
+	<bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=gnome-directory-thumbnailer" />
 	<maintainer>
 		<foaf:Person>
 			<foaf:name>Philip Withnall</foaf:name>
