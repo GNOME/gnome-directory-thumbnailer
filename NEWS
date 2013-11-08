@@ -1,3 +1,18 @@
+Overview of changes from gnome-directory-thumbnailer 0.1.0 to 0.1.1
+===================================================================
+
+Major changes:
+ • Add a --show-overlay option
+
+Bugs fixed:
+ • Bug 710260 — Add Bugzilla product for gnome-directory-thumbnailer
+
+Updated translations:
+ • pl (Piotr Drąg)
+ • pt_BR (Enrico Nicoletto)
+ • sl (Matej Urbančič)
+
+
 Initial release of gnome-directory-thumbnailer 0.1.0
 ====================================================
 
