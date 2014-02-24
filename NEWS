@@ -2,10 +2,15 @@ Overview of changes from gnome-directory-thumbnailer 0.1.1 to 0.1.2
 ===================================================================
 
 Major changes:
-
-Bugs fixed:
+ • Update DOAP file and website address
 
 Updated translations:
+ • cs (Marek Černocký)
+ • de (Christian Kirbach)
+ • el (Dimitris Spingos)
+ • es (Daniel Mustieles)
+ • hu (Balázs Úr)
+ • sr (Мирослав Николић)
 
 
 Overview of changes from gnome-directory-thumbnailer 0.1.0 to 0.1.1
