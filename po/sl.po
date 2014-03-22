@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-directory-thumbnailer master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "directory-thumbnailer&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-23 21:30+0000\n"
-"PO-Revision-Date: 2013-11-02 11:55+0100\n"
+"POT-Creation-Date: 2014-03-21 19:44+0000\n"
+"PO-Revision-Date: 2014-03-22 08:27+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -24,18 +24,21 @@ msgstr ""
 #: ../src/main.c:347
 #, c-format
 msgid "Error generating thumbnail for file ‘%s’."
-msgstr ""
+msgstr "Napaka ustvarjanja sličice za datoteko ‘%s’."
 
 #: ../src/main.c:351
 #, c-format
 msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
 msgstr ""
+"Napaka ustvarjanja sličice za datoteko ‘%s’: dosežena je omejitev "
+"ponavljanja."
 
 #: ../src/main.c:356
 #, c-format
 msgid ""
 "Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
 msgstr ""
+"Napaka ustvarjanja sličice za datoteko ‘%s’: vrsta MIME '%s' ni podprta."
 
 #. No error, but the directory was empty.
 #: ../src/main.c:399
@@ -45,11 +48,11 @@ msgstr "Mapa je prazna."
 
 #: ../src/main.c:447
 msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
-msgstr ""
+msgstr "Največja velikost sličice v točkah (največja širina in višina)"
 
 #: ../src/main.c:448
 msgid "Show the normal folder icon as an overlay on the thumbnail"
-msgstr ""
+msgstr "Pokaži običajno ikono mape kot prekrivno na sličici"
 
 #: ../src/main.c:449
 msgid "[INPUT FILE] [OUTPUT FILE]"
@@ -59,7 +62,7 @@ msgstr "[vhodna datoteka] [izhodna datoteka]"
 #. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
 #: ../src/main.c:485
 msgid "— Generate thumbnails for directories"
-msgstr "— ustvarjanje sličic map"
+msgstr "– ustvarjanje sličic map"
 
 #: ../src/main.c:490
 #, c-format
@@ -69,15 +72,15 @@ msgstr "Ni mogoče razčleniti možnosti ukazne vrstice: %s\n"
 #: ../src/main.c:527
 #, c-format
 msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
-msgstr ""
+msgstr "Ni mogoče ustvariti sličice za mapo ‘%s’: %s\n"
 
 #. Failed to load the icon. Shame.
 #: ../src/main.c:615
 #, c-format
 msgid "Couldn’t load folder overlay icon: %s\n"
-msgstr ""
+msgstr "Ni mogoče naložiti prekrivne ikone mape: %s\n"
 
 #: ../src/main.c:638
 #, c-format
 msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
-msgstr ""
+msgstr "Ni mogoče slikati sličice za ‘%s’: %s\n"
