@@ -15,6 +15,16 @@ Specifying the maximum thumbnail dimensions:
  $ gnome-directory-thumbnailer dir out.png -s 200
 This allows the maximum height and width to be specified (in pixels).
 
+Uninstallation
+--------------
+
+If you uninstall gnome-directory-thumbnailer, some of your directories may
+retain their generated thumbnails. If this is the case, delete directories:
+ ~/.cache/thumbnails
+ ~/.thumbnails
+to clear the generated directory thumbnails. Other thumbnails will then be
+regenerated on demand.
+
 Dependencies
 ============
 
