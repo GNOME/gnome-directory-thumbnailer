@@ -2,10 +2,12 @@ Overview of changes from gnome-directory-thumbnailer 0.1.3 to 0.1.4
 ===================================================================
 
 Major changes:
-
-Bugs fixed:
+ • Add a note about uninstallation to the README — packagers please note that
+   the user’s thumbnail cache directories should be cleared on uninstallation
 
 Updated translations:
+ • fr (Alain Lojewski)
+ • id (Andika Triwidada)
 
 
 Overview of changes from gnome-directory-thumbnailer 0.1.2 to 0.1.3
