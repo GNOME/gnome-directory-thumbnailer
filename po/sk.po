@@ -1,0 +1,80 @@
+# Slovak translation for gnome-directory-thumbnailer.
+# Copyright (C) 2015 gnome-directory-thumbnailer's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-directory-thumbnailer package.
+# Dušan Kazik <prescott66@gmail.com>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-directory-thumbnailer master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-directory-"
+"thumbnailer&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-03-11 07:44+0000\n"
+"PO-Revision-Date: 2015-03-11 09:59+0100\n"
+"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"X-Generator: Poedit 1.7.4\n"
+
+#: ../src/main.c:347
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’."
+msgstr "Chyba pri generovaní miniatúry súboru „%s“."
+
+#: ../src/main.c:351
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
+msgstr "Chyba pri generovaní miniatúry súboru „%s“: bol dosiahnutý limit rekurzií."
+
+#: ../src/main.c:356
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
+msgstr "Chyba pri generovaní miniatúry súboru „%s“: typ MIME „%s“ nie je podporovaný."
+
+#. No error, but the directory was empty.
+#: ../src/main.c:399
+#, c-format
+msgid "Directory is empty."
+msgstr "Adresár je prázdny."
+
+#: ../src/main.c:447
+msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
+msgstr "Maximálna veľkosť miniatúry v pixeloch (maximálna šírka alebo výška)"
+
+#: ../src/main.c:448
+msgid "Show the normal folder icon as an overlay on the thumbnail"
+msgstr "Zobrazí normálnu ikonu priečinka ako prekrytie miniatúry"
+
+#: ../src/main.c:449
+msgid "[INPUT FILE] [OUTPUT FILE]"
+msgstr "[VSTUPNÝ SÚBOR] [VÝSTUPNÝ SÚBOR]"
+
+#. Handle the command line options.
+#. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
+#: ../src/main.c:485
+msgid "— Generate thumbnails for directories"
+msgstr "— Vygeneruje miniatúry adresárov"
+
+#: ../src/main.c:490
+#, c-format
+msgid "Couldn’t parse command line options: %s\n"
+msgstr "Nepodarilo sa analyzovať voľby príkazového riadka: %s\n"
+
+#: ../src/main.c:527
+#, c-format
+msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
+msgstr "Nepodarilo sa vygenerovať miniatúru adresára „%s“: %s\n"
+
+#. Failed to load the icon. Shame.
+#: ../src/main.c:615
+#, c-format
+msgid "Couldn’t load folder overlay icon: %s\n"
+msgstr "Nepodarilo sa načítať ikonu priečinka na prekrytie: %s\n"
+
+#: ../src/main.c:638
+#, c-format
+msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
+msgstr "Nepodarilo sa uložiť miniatúru do „%s“: %s\n"
