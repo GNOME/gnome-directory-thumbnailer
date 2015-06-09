@@ -261,8 +261,19 @@ pick_interesting_file_for_directory (GFile *input_directory, GFileInfo **file_in
 
 	g_file_enumerator_close (enumerator, NULL, NULL);  /* ignore errors from this */
 
-	/* Did we break out of the loop because of an error? */
+	/* Did we break out of the loop because of an error? If so, and we
+	 * already have an interesting file, squash the error and continue with
+	 * that file. */
 	if (child_error != NULL) {
+		if (interesting_file != NULL) {
+			gchar *path = g_file_get_path (input_directory);
+			g_debug ("Ignoring error enumerating directory ‘%s’; "
+			         "found interesting file already.", path);
+			g_free (path);
+
+			g_clear_error (&child_error);
+		}
+
 		goto done;
 	}
 
