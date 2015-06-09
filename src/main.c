@@ -229,6 +229,8 @@ pick_interesting_file_for_directory (GFile *input_directory, GFileInfo **file_in
 		g_debug ("Examining file ‘%s’ with interestingness %u", g_file_info_get_name (file_info), file_interestingness);
 
 		if (file_interestingness > interesting_file_interestingness) {
+			gchar *path = NULL;  /* owned */
+
 			g_clear_object (&interesting_file_info);
 			g_clear_object (&interesting_file);
 
@@ -236,11 +238,15 @@ pick_interesting_file_for_directory (GFile *input_directory, GFileInfo **file_in
 			interesting_file = g_object_ref (file);
 			interesting_file_interestingness = file_interestingness;
 
-			g_debug ("Updating most interesting file to ‘%s’ with interestingness %u.", g_file_get_path (interesting_file), interesting_file_interestingness);
+			path = g_file_get_path (interesting_file);
+			g_debug ("Updating most interesting file to ‘%s’ with interestingness %u.", path, interesting_file_interestingness);
+			g_free (path);
 
 			/* If this is the most fantastic, interesting, amazing file we can possibly encounter, bail. */
 			if (interesting_file_interestingness >= MAX_FILE_INTERESTINGNESS) {
-				g_debug ("Interestingness reached maximum of %u. Breaking out with most interesting file ‘%s’.", MAX_FILE_INTERESTINGNESS, g_file_get_path (interesting_file));
+				path = g_file_get_path (interesting_file);
+				g_debug ("Interestingness reached maximum of %u. Breaking out with most interesting file ‘%s’.", MAX_FILE_INTERESTINGNESS, path);
+				g_free (path);
 
 				g_object_unref (file_info);
 				g_object_unref (file);
