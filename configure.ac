@@ -39,6 +39,9 @@ AC_SUBST([GDT_VERSION_MICRO])
 # gnome-directory-thumbnailer dependencies
 PKG_CHECK_MODULES(GDT, [gobject-2.0 glib-2.0 >= $GLIB_REQS gio-2.0 >= $GIO_REQS gdk-pixbuf-2.0 >= $GDK_PIXBUF_REQS gtk+-3.0 >= $GTK_REQS gnome-desktop-3.0 >= $GNOME_DESKTOP_REQS])
 
+AC_CHECK_LIBM
+AC_SUBST([LIBM])
+
 # Internationalisation
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST([GETTEXT_PACKAGE])

@@ -33,7 +33,7 @@ src_gnome_directory_thumbnailer_CFLAGS = \
 
 src_gnome_directory_thumbnailer_LDADD = \
 	$(GDT_LIBS) \
-	-lm \
+	$(LIBM) \
 	$(CODE_COVERAGE_LIBS) \
 	$(AM_LIBADD) \
 	$(NULL)
