@@ -2,10 +2,11 @@ Overview of changes from gnome-directory-thumbnailer 0.1.5 to 0.1.6
 ===================================================================
 
 Major changes:
-
-Bugs fixed:
+ • Fixed a memory leak and a crash
 
 Updated translations:
+ • oc (Cédric Valmary)
+ • sv (Anders Jonsson)
 
 
 Overview of changes from gnome-directory-thumbnailer 0.1.4 to 0.1.5
