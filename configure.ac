@@ -6,6 +6,9 @@ m4_define(gdt_version_minor, 1)
 m4_define(gdt_version_micro, 6)
 
 AC_INIT([gnome-directory-thumbnailer],[gdt_version_major.gdt_version_minor.gdt_version_micro],[https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-directory-thumbnailer],[gnome-directory-thumbnailer],[https://wiki.gnome.org/Projects/GnomeDirectoryThumbnailer])
+AX_IS_RELEASE([git-directory])
+
+AX_CHECK_ENABLE_DEBUG([yes])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -48,10 +51,8 @@ AC_SUBST([GETTEXT_PACKAGE])
 AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],"$GETTEXT_PACKAGE",[The name of the gettext domain])
 IT_PROG_INTLTOOL([0.40.0])
 
-# General GNOME macros
-GNOME_DEBUG_CHECK
-GNOME_COMPILE_WARNINGS([maximum])
-GNOME_MAINTAINER_MODE_DEFINES
+# General macros
+AX_COMPILER_FLAGS([WARN_CFLAGS],[WARN_LDFLAGS])
 AX_GENERATE_CHANGELOG
 
 AC_CONFIG_FILES([

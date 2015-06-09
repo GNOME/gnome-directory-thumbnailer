@@ -31,6 +31,11 @@ src_gnome_directory_thumbnailer_CFLAGS = \
 	$(AM_CFLAGS) \
 	$(NULL)
 
+src_gnome_directory_thumbnailer_LDFLAGS = \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
+
 src_gnome_directory_thumbnailer_LDADD = \
 	$(GDT_LIBS) \
 	$(LIBM) \
