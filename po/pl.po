@@ -4,14 +4,14 @@
 # pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
 # gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Piotr Drąg <piotrdrag@gmail.com>, 2013.
-# Aviary.pl <gnomepl@aviary.pl>, 2013.
+# Piotr Drąg <piotrdrag@gmail.com>, 2013-2015.
+# Aviary.pl <gnomepl@aviary.pl>, 2013-2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-directory-thumbnailer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-23 18:00+0200\n"
-"PO-Revision-Date: 2013-10-23 18:05+0200\n"
+"POT-Creation-Date: 2015-09-03 01:43+0200\n"
+"PO-Revision-Date: 2015-09-03 01:44+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -23,68 +23,68 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: Poland\n"
 
-#: ../src/main.c:347
+#: ../src/main.c:364
 #, c-format
 msgid "Error generating thumbnail for file ‘%s’."
-msgstr "Błąd podczas tworzenia miniatury dla pliku \"%s\"."
+msgstr "Błąd podczas tworzenia miniatury dla pliku „%s”."
 
-#: ../src/main.c:351
+#: ../src/main.c:368
 #, c-format
 msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
 msgstr ""
-"Błąd podczas tworzenia miniatury dla pliku \"%s\": przekroczono ograniczenie "
+"Błąd podczas tworzenia miniatury dla pliku „%s”: przekroczono ograniczenie "
 "rekursji."
 
-#: ../src/main.c:356
+#: ../src/main.c:373
 #, c-format
 msgid ""
 "Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
 msgstr ""
-"Błąd podczas tworzenia miniatury dla pliku \"%s\": typ MIME \"%s\" jest "
+"Błąd podczas tworzenia miniatury dla pliku „%s”: typ MIME „%s” jest "
 "nieobsługiwany."
 
 #. No error, but the directory was empty.
-#: ../src/main.c:399
+#: ../src/main.c:416
 #, c-format
 msgid "Directory is empty."
 msgstr "Katalog jest pusty."
 
-#: ../src/main.c:447
+#: ../src/main.c:464
 msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
 msgstr ""
 "Maksymalne wymiary miniatury w pikselach (maksymalna szerokość lub wysokość)"
 
-#: ../src/main.c:448
+#: ../src/main.c:465
 msgid "Show the normal folder icon as an overlay on the thumbnail"
 msgstr "Wyświetlanie zwykłej ikony katalogu jako nakładkę na miniaturę"
 
-#: ../src/main.c:449
+#: ../src/main.c:466
 msgid "[INPUT FILE] [OUTPUT FILE]"
 msgstr "[PLIK WEJŚCIOWY] [PLIK WYJŚCIOWY]"
 
 #. Handle the command line options.
 #. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
-#: ../src/main.c:485
+#: ../src/main.c:502
 msgid "— Generate thumbnails for directories"
 msgstr "— tworzenie miniatur dla katalogów"
 
-#: ../src/main.c:490
+#: ../src/main.c:507
 #, c-format
 msgid "Couldn’t parse command line options: %s\n"
 msgstr "Nie można przetworzyć opcji wiersza poleceń: %s\n"
 
-#: ../src/main.c:527
+#: ../src/main.c:544
 #, c-format
 msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
-msgstr "Nie można utworzyć miniatury dla katalogu \"%s\": %s\n"
+msgstr "Nie można utworzyć miniatury dla katalogu „%s”: %s\n"
 
 #. Failed to load the icon. Shame.
-#: ../src/main.c:615
+#: ../src/main.c:632
 #, c-format
 msgid "Couldn’t load folder overlay icon: %s\n"
 msgstr "Nie można wczytać ikony nakładki katalogu: %s\n"
 
-#: ../src/main.c:638
+#: ../src/main.c:655
 #, c-format
 msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
-msgstr "Nie można zapisać miniatury w \"%s\": %s\n"
+msgstr "Nie można zapisać miniatury w „%s”: %s\n"
