@@ -2,22 +2,23 @@
 # Copyright (C) 2014 gnome-directory-thumbnailer's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-directory-thumbnailer package.
 # Tiagosdot <almosthumane@portugalmail.pt>, 2014.
+# Pedro Albuquerque <palbuquerque73@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-directory-thumbnailer master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "directory-thumbnailer&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-18 07:39+0000\n"
-"PO-Revision-Date: 2014-03-18 10:42+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
+"POT-Creation-Date: 2014-04-07 22:05+0000\n"
+"PO-Revision-Date: 2015-09-19 09:11+0100\n"
+"Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
+"Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
 #: ../src/main.c:347
 #, c-format
@@ -29,7 +30,7 @@ msgstr "Erro ao criar miniatura para o ficheiro \"%s\"."
 msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
 msgstr ""
 "Erro ao criar miniatura para o ficheiro \"%s\": alcançado o limite de "
-"recursão."
+"recursividade."
 
 #: ../src/main.c:356
 #, c-format
@@ -43,7 +44,7 @@ msgstr ""
 #: ../src/main.c:399
 #, c-format
 msgid "Directory is empty."
-msgstr "O diretório está vazio."
+msgstr "A pasta está vazia."
 
 #: ../src/main.c:447
 msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
@@ -51,7 +52,7 @@ msgstr "Tamanho máximo da miniatura em pixels (altura ou largura máximas)"
 
 #: ../src/main.c:448
 msgid "Show the normal folder icon as an overlay on the thumbnail"
-msgstr "Apresenta o ícone normal da pasta como uma sobreposição na miniatura"
+msgstr "Mostrar o ícone normal da pasta como sobreposição na miniatura"
 
 #: ../src/main.c:449
 msgid "[INPUT FILE] [OUTPUT FILE]"
@@ -61,25 +62,25 @@ msgstr "[FICHEIRO DE ENTRADA] [FICHEIRO DE SAÍDA]"
 #. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
 #: ../src/main.c:485
 msgid "— Generate thumbnails for directories"
-msgstr "— Gera miniaturas para os diretórios"
+msgstr "— gerar miniaturas para pastas"
 
 #: ../src/main.c:490
 #, c-format
 msgid "Couldn’t parse command line options: %s\n"
-msgstr "Não foi possível analisar as opções de linha de comando: %s\n"
+msgstr "Impossível processar as opções de linha de comando: %s\n"
 
 #: ../src/main.c:527
 #, c-format
 msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
-msgstr "Não foi possível criar miniatura para o diretório \"%s\": %s\n"
+msgstr "Impossível criar miniatura para a pasta \"%s\": %s\n"
 
 #. Failed to load the icon. Shame.
 #: ../src/main.c:615
 #, c-format
 msgid "Couldn’t load folder overlay icon: %s\n"
-msgstr "Não foi possível carregar o ícone de sobreposição de pasta: %s\n"
+msgstr "Impossível carregar o ícone de sobreposição de pasta: %s\n"
 
 #: ../src/main.c:638
 #, c-format
 msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
-msgstr "Não foi possível gravar a miniatura em \"%s\": %s\n"
+msgstr "Impossível gravar a miniatura em \"%s\": %s\n"
