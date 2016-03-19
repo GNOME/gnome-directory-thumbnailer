@@ -1,86 +1,83 @@
-# Turkish translation for gnome-directory-thumbnailer.
-# Copyright (C) 2015 gnome-directory-thumbnailer's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gnome-directory-thumbnailer package.
-# Muhammet Kara <muhammetk@gmail.com>, 2015.
+#
+# Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-directory-thumbnailer master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "directory-thumbnailer&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-17 07:39+0000\n"
-"PO-Revision-Date: 2015-02-17 11:49+0200\n"
-"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
-"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"POT-Creation-Date: 2015-06-09 11:37+0000\n"
+"PO-Revision-Date: 2016-03-19 13:54+0200\n"
+"Last-Translator: Gökhan Gurbetoğlu <ggurbet@gmail.com>\n"
+"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 2.91.6\n"
+"X-POOTLE-MTIME: 1424255563.000000\n"
 
-#: ../src/main.c:347
+#: ../src/main.c:364
 #, c-format
 msgid "Error generating thumbnail for file ‘%s’."
-msgstr "‘%s’ dosyası için küçük resim üretilirken hata oluştu."
+msgstr "‘%s’ dosyası için küçük resim üretmede hata."
 
-#: ../src/main.c:351
+#: ../src/main.c:368
 #, c-format
 msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
 msgstr ""
-"‘%s’ dosyası için küçük resim üretilirken hata oluştu: özyineleme sınırına "
-"ulaşıldı."
+"‘%s’ dosyası için küçük resim üretmede hata: özyineleme sınırına ulaşıldı."
 
-#: ../src/main.c:356
+#: ../src/main.c:373
 #, c-format
 msgid ""
 "Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
 msgstr ""
-"‘%s’ dosyası için küçük resim üretilirken hata oluştu: dosya türü (MIME) "
-"‘%s’ desteklenmiyor."
+"‘%s’ dosyası için küçük resim üretmede hata: ‘%s’ MIME türü desteklenmiyor."
 
 #. No error, but the directory was empty.
-#: ../src/main.c:399
+#: ../src/main.c:416
 #, c-format
 msgid "Directory is empty."
 msgstr "Dizin boş."
 
-#: ../src/main.c:447
+#: ../src/main.c:464
 msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
 msgstr ""
-"Küçük resmin piksel cinsinden azami boyutu (azami genişlik ya da yükseklik)"
+"Küçük resmin piksel olarak azami boyutu (azami genişlik veya yükseklik)"
 
-#: ../src/main.c:448
+#: ../src/main.c:465
 msgid "Show the normal folder icon as an overlay on the thumbnail"
-msgstr ""
+msgstr "Normal dizin simgesini küçük resim üstüne bindirerek göster"
 
-#: ../src/main.c:449
+#: ../src/main.c:466
 msgid "[INPUT FILE] [OUTPUT FILE]"
 msgstr "[GİRDİ DOSYASI] [ÇIKTI DOSYASI]"
 
 #. Handle the command line options.
 #. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
-#: ../src/main.c:485
+#: ../src/main.c:502
 msgid "— Generate thumbnails for directories"
-msgstr "— Dizinler için küçük resim üretir"
+msgstr "— Dizinler için küçük resim oluştur"
 
-#: ../src/main.c:490
+#: ../src/main.c:507
 #, c-format
 msgid "Couldn’t parse command line options: %s\n"
 msgstr "Komut satırı seçenekleri ayrıştırılamadı: %s\n"
 
-#: ../src/main.c:527
+#: ../src/main.c:544
 #, c-format
 msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
-msgstr "‘%s’ dizini için küçük resim üretilemedi: %s\n"
+msgstr "‘%s’ dizini için küçük resim oluşturulamadı: %s\n"
 
 #. Failed to load the icon. Shame.
-#: ../src/main.c:615
+#: ../src/main.c:632
 #, c-format
 msgid "Couldn’t load folder overlay icon: %s\n"
-msgstr ""
+msgstr "Klasör bindirme simgesi yüklenemedi: %s\n"
 
-#: ../src/main.c:638
+#: ../src/main.c:655
 #, c-format
 msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
-msgstr ""
+msgstr "Küçük resim ‘%s’e kaydedilemedi: %s\n"
