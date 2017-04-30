@@ -2,10 +2,10 @@ Overview of changes from gnome-directory-thumbnailer 0.1.8 to 0.1.9
 ===================================================================
 
 Major changes:
-
-Bugs fixed:
+ • Improve scaling behaviour for very-non-square images
 
 Updated translations:
+ • fur (Fabio Tomat)
 
 
 Overview of changes from gnome-directory-thumbnailer 0.1.7 to 0.1.8
