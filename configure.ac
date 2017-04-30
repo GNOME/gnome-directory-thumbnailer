@@ -3,7 +3,7 @@ AC_PREREQ(2.65)
 # gnome-directory-thumbnailer release version
 m4_define(gdt_version_major, 0)
 m4_define(gdt_version_minor, 1)
-m4_define(gdt_version_micro, 9)
+m4_define(gdt_version_micro, 10)
 
 AC_INIT([gnome-directory-thumbnailer],[gdt_version_major.gdt_version_minor.gdt_version_micro],[https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-directory-thumbnailer],[gnome-directory-thumbnailer],[https://wiki.gnome.org/Projects/GnomeDirectoryThumbnailer])
 AX_IS_RELEASE([git-directory])
