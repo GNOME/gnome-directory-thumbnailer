@@ -42,6 +42,14 @@ AC_SUBST([GDT_VERSION_MICRO])
 # gnome-directory-thumbnailer dependencies
 PKG_CHECK_MODULES(GDT, [gobject-2.0 glib-2.0 >= $GLIB_REQS gio-2.0 >= $GIO_REQS gdk-pixbuf-2.0 >= $GDK_PIXBUF_REQS gtk+-3.0 >= $GTK_REQS gnome-desktop-3.0 >= $GNOME_DESKTOP_REQS])
 
+# Optional higher gdk-pixbuf dependency
+PKG_CHECK_MODULES([GDK_PIXBUF], [gdk-pixbuf-2.0 >= 2.36.5],
+                  [have_gdk_pixbuf_2_36_5=yes], [have_gdk_pixbuf_2_36_5=no])
+AS_IF([test "$have_gdk_pixbuf_2_36_5" = "yes"], [
+	AC_DEFINE([HAVE_GDK_PIXBUF_2_36_5], [1],
+	          [Define if gdk-pixbuf >= 2.36.5 is available])
+])
+
 AC_CHECK_LIBM
 AC_SUBST([LIBM])
 

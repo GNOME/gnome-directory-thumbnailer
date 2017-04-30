@@ -576,7 +576,12 @@ main (int argc, char *argv[])
 				goto done;
 			}
 
+#if HAVE_GDK_PIXBUF_2_36_5
+			scaled_pixbuf = gdk_pixbuf_scale_simple (pixbuf, scaled_width, scaled_height, GDK_INTERP_HYPER);
+#else
 			scaled_pixbuf = gnome_desktop_thumbnail_scale_down_pixbuf (pixbuf, scaled_width, scaled_height);
+#endif
+
 			g_object_unref (pixbuf);
 			pixbuf = scaled_pixbuf;  /* transfer ownership */
 			scaled_pixbuf = NULL;
@@ -591,7 +596,7 @@ main (int argc, char *argv[])
 		gint scaled_overlay_size, scaled_overlay_x, scaled_overlay_y;
 		gdouble scale;
 
-		/* Re-query the dimensions since we don’t know which dimensions gnome_desktop_thumbnail_scale_down_pixbuf() chose. */
+		/* Re-query the dimensions since we don’t know which dimensions gdk_pixbuf_scale_simple() chose. */
 		scaled_width = gdk_pixbuf_get_width (pixbuf);
 		scaled_height = gdk_pixbuf_get_height (pixbuf);
 
