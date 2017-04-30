@@ -571,6 +571,11 @@ main (int argc, char *argv[])
 			g_debug ("Scaling thumbnail from %u×%u to %u×%u with for output size %i with scaling factor %f.",
 			         original_width, original_height, scaled_width, scaled_height, output_size, scale);
 
+			if (scaled_width == 0 || scaled_height == 0) {
+				status = STATUS_ERROR_GENERATING_THUMBNAIL;
+				goto done;
+			}
+
 			scaled_pixbuf = gnome_desktop_thumbnail_scale_down_pixbuf (pixbuf, scaled_width, scaled_height);
 			g_object_unref (pixbuf);
 			pixbuf = scaled_pixbuf;  /* transfer ownership */
