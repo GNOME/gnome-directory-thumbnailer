@@ -1,0 +1,85 @@
+# Croatian translation for gnome-directory-thumbnailer.
+# Copyright (C) 2017 gnome-directory-thumbnailer's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-directory-thumbnailer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-directory-thumbnailer master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"directory-thumbnailer&keywords=I18N+L10N&component=General\n"
+"POT-Creation-Date: 2017-04-30 09:25+0000\n"
+"PO-Revision-Date: 2017-10-21 23:18+0200\n"
+"Language-Team: Croatian <hr@li.org>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: ../src/main.c:364
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’."
+msgstr "Greška stvaranja minijature za datoteku ‘%s’."
+
+#: ../src/main.c:368
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
+msgstr ""
+"Greška stvaranja minijature za datoteku ‘%s’: dosegnuto ograničenje "
+"rekurzije."
+
+#: ../src/main.c:373
+#, c-format
+msgid ""
+"Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
+msgstr ""
+"Greška stvaranja minijature za datoteku ‘%s’: MIME vrsta ‘%s’ je nepodržana."
+
+#. No error, but the directory was empty.
+#: ../src/main.c:416
+#, c-format
+msgid "Directory is empty."
+msgstr "Mapa je prazna."
+
+#: ../src/main.c:464
+msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
+msgstr "Najveća veličina minijatura u pikselima (najveća širina ili visina)"
+
+#: ../src/main.c:465
+msgid "Show the normal folder icon as an overlay on the thumbnail"
+msgstr "Prikaži uobičajenu ikonu mape kao prevlaku na minijaturi."
+
+#: ../src/main.c:466
+msgid "[INPUT FILE] [OUTPUT FILE]"
+msgstr "[ULAZNA DATOTEKA] [IZLAZNA DATOTEKA]"
+
+#. Handle the command line options.
+#. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
+#: ../src/main.c:502
+msgid "— Generate thumbnails for directories"
+msgstr "— Stvara minijature za mape"
+
+#: ../src/main.c:507
+#, c-format
+msgid "Couldn’t parse command line options: %s\n"
+msgstr "Nemoguća obrada mogućnosti naredbenog redka: %s\n"
+
+#: ../src/main.c:544
+#, c-format
+msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
+msgstr "Nemoguće stvaranje minijature za mapu ‘%s’: %s\n"
+
+#. Failed to load the icon. Shame.
+#: ../src/main.c:642
+#, c-format
+msgid "Couldn’t load folder overlay icon: %s\n"
+msgstr "Nemoguće učitavanje ikone prevlake mape: %s\n"
+
+#: ../src/main.c:665
+#, c-format
+msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
+msgstr "Nemoguće spremanje minijature u ‘%s’: %s\n"
