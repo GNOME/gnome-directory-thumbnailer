@@ -1,0 +1,77 @@
+# Basque translation for gnome-directory-thumbnailer.
+# Copyright (C) 2019 gnome-directory-thumbnailer's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-directory-thumbnailer package.
+# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
+#
+msgid ""
+msgstr "Project-Id-Version: gnome-directory-thumbnailer master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-directory-thumbnailer/issues\n"
+"POT-Creation-Date: 2019-09-20 12:46+0000\n"
+"PO-Revision-Date: 2019-10-01 10:00+0100\n"
+"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"Language-Team: Basque <librezale@librezale.eus>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/main.c:364
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’."
+msgstr "Errorea ‘%s’ fitxategiaren miniatura sortzean."
+
+#: ../src/main.c:368
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
+msgstr "Errorea ‘%s’ fitxategiaren miniatura sortzean: errekurtsio-muga gainditu da."
+
+#: ../src/main.c:373
+#, c-format
+msgid ""
+"Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
+msgstr "Errorea ‘%s’ fitxategiaren miniatura sortzean: ‘%s’ MIME mota ez dago onartuta."
+
+#. No error, but the directory was empty.
+#: ../src/main.c:416
+#, c-format
+msgid "Directory is empty."
+msgstr "Direktorioa hutsik dago."
+
+#: ../src/main.c:464
+msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
+msgstr "Miniaturaren gehieneko tamaina pixeletan (gehieneko zabalera edo altuera)"
+
+#: ../src/main.c:465
+msgid "Show the normal folder icon as an overlay on the thumbnail"
+msgstr "Erakutsi karpeta normalaren ikonoa miniaturaren gainean"
+
+#: ../src/main.c:466
+msgid "[INPUT FILE] [OUTPUT FILE]"
+msgstr "[SARRERAKO FITXATEGIA] [IRTEERAKO FITXATEGIA]"
+
+#. Handle the command line options.
+#. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
+#: ../src/main.c:502
+msgid "— Generate thumbnails for directories"
+msgstr "— Sortu miniaturak direktorioetarako"
+
+#: ../src/main.c:507
+#, c-format
+msgid "Couldn’t parse command line options: %s\n"
+msgstr "Ezin izan dira komando-lerroko aukerak analizatu: %s\n"
+
+#: ../src/main.c:544
+#, c-format
+msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
+msgstr "Ezin izan da miniatura sortu ‘%s’ direktoriorako: %s\n"
+
+#. Failed to load the icon. Shame.
+#: ../src/main.c:642
+#, c-format
+msgid "Couldn’t load folder overlay icon: %s\n"
+msgstr "Ezin izan da kargatu karpetan gainjartzeko ikonoa: %s\n"
+
+#: ../src/main.c:665
+#, c-format
+msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
+msgstr "Ezin izan da miniatura gorde ‘%s’ kokalekuan: %s\n"
