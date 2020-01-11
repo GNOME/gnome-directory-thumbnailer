@@ -1,0 +1,81 @@
+# Japanese translation for gnome-directory-thumbnailer.
+# Copyright (C) 2020 gnome-directory-thumbnailer's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-directory-thumbnailer package.
+# sicklylife <translation@sicklylife.jp>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-directory-thumbnailer master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-directory-"
+"thumbnailer/issues\n"
+"POT-Creation-Date: 2019-10-01 16:33+0000\n"
+"PO-Revision-Date: 2020-01-10 00:00+0900\n"
+"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
+"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../src/main.c:364
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’."
+msgstr "‘%s’ のサムネイル生成中にエラーが発生しました。"
+
+#: ../src/main.c:368
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
+msgstr "‘%s’ のサムネイル生成中にエラーが発生しました: 再帰の上限に達しました。"
+
+#: ../src/main.c:373
+#, c-format
+msgid ""
+"Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
+msgstr ""
+"‘%s’ のサムネイル生成中にエラーが発生しました: MIME タイプ ‘%s’ はサポートしていません。"
+
+#. No error, but the directory was empty.
+#: ../src/main.c:416
+#, c-format
+msgid "Directory is empty."
+msgstr "ディレクトリが空です。"
+
+#: ../src/main.c:464
+msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
+msgstr "サムネイルの最大ピクセルサイズ (幅または高さの最大値)"
+
+#: ../src/main.c:465
+msgid "Show the normal folder icon as an overlay on the thumbnail"
+msgstr "フォルダーアイコンをサムネイル上に表示する"
+
+#: ../src/main.c:466
+msgid "[INPUT FILE] [OUTPUT FILE]"
+msgstr "[入力ファイル] [出力ファイル]"
+
+#. Handle the command line options.
+#. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
+#: ../src/main.c:502
+msgid "— Generate thumbnails for directories"
+msgstr "— ディレクトリのサムネイルを生成します"
+
+#: ../src/main.c:507
+#, c-format
+msgid "Couldn’t parse command line options: %s\n"
+msgstr "コマンドラインオプションを解釈できませんでした: %s\n"
+
+#: ../src/main.c:544
+#, c-format
+msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
+msgstr "ディレクトリ ‘%s’ のサムネイルを生成できませんでした: %s\n"
+
+#. Failed to load the icon. Shame.
+#: ../src/main.c:642
+#, c-format
+msgid "Couldn’t load folder overlay icon: %s\n"
+msgstr "フォルダーアイコンを読み込めませんでした: %s\n"
+
+#: ../src/main.c:665
+#, c-format
+msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
+msgstr "サムネイルを ‘%s’ に保存できませんでした: %s\n"
