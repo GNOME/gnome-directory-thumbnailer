@@ -1,0 +1,82 @@
+# Chinese (China) translation for gnome-directory-thumbnailer.
+# Copyright (C) 2015 gnome-directory-thumbnailer's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-directory-thumbnailer package.
+# Mingye Wang <arthur2e5@aosc.xyz>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-directory-thumbnailer master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"directory-thumbnailer&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-12-06 08:52+0000\n"
+"PO-Revision-Date: 2015-12-06 15:47-0500\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Mingye Wang (Arthur2e5) <arthur200126@gmail.com>\n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../src/main.c:364
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’."
+msgstr "为文件“%s”生成缩略图出错。"
+
+#: ../src/main.c:368
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
+msgstr "为文件“%s”生成缩略图出错：达到递归限制。"
+
+#: ../src/main.c:373
+#, c-format
+msgid ""
+"Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
+msgstr "为文件“%s”生成缩略图出错：不支持 MIME 类型“%s”。"
+
+#. No error, but the directory was empty.
+#: ../src/main.c:416
+#, c-format
+msgid "Directory is empty."
+msgstr "目录空。"
+
+#: ../src/main.c:464
+msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
+msgstr "缩略图的最大像素大小（最大宽度或高度）"
+
+# 所有的覆盖我都心虚觉得怪。
+#: ../src/main.c:465
+msgid "Show the normal folder icon as an overlay on the thumbnail"
+msgstr "在缩略图上覆盖显示正常文件夹图标。"
+
+#: ../src/main.c:466
+msgid "[INPUT FILE] [OUTPUT FILE]"
+msgstr "[输入文件] [输出文件]"
+
+#. Handle the command line options.
+#. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
+#: ../src/main.c:502
+msgid "— Generate thumbnails for directories"
+msgstr "——为目录生成缩略图"
+
+#: ../src/main.c:507
+#, c-format
+msgid "Couldn’t parse command line options: %s\n"
+msgstr "无法解析命令行选项：%s\n"
+
+#: ../src/main.c:544
+#, c-format
+msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
+msgstr "无法为目录“%s”生成缩略图：%s\n"
+
+#. Failed to load the icon. Shame.
+#: ../src/main.c:632
+#, c-format
+msgid "Couldn’t load folder overlay icon: %s\n"
+msgstr "无法加载文件夹覆盖图标：%s\n"
+
+#: ../src/main.c:655
+#, c-format
+msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
+msgstr "不能将缩略图保存到“%s”：%s\n"
