@@ -5,7 +5,7 @@ m4_define(gdt_version_major, 0)
 m4_define(gdt_version_minor, 1)
 m4_define(gdt_version_micro, 12)
 
-AC_INIT([gnome-directory-thumbnailer],[gdt_version_major.gdt_version_minor.gdt_version_micro],[https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-directory-thumbnailer],[gnome-directory-thumbnailer],[https://wiki.gnome.org/Projects/GnomeDirectoryThumbnailer])
+AC_INIT([gnome-directory-thumbnailer],[gdt_version_major.gdt_version_minor.gdt_version_micro],[https://gitlab.gnome.org/GNOME/gnome-directory-thumbnailer/-/issues/],[gnome-directory-thumbnailer],[https://wiki.gnome.org/Projects/GnomeDirectoryThumbnailer])
 AX_IS_RELEASE([git-directory])
 
 AX_CHECK_ENABLE_DEBUG([yes])
