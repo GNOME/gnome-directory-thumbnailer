@@ -96,7 +96,12 @@ static guint
 calculate_file_interestingness (GFileInfo *file_info, GFile *file, GnomeDesktopThumbnailFactory *factory)
 {
 	guint interestingness = 1;
+#ifdef GLIB_VERSION_2_62
+	GDateTime *file_mtime = NULL;
+#else
 	GTimeVal file_mtime;
+#endif//GLIB_VERSION_2_62
+	gint64 file_mtime_unix;
 	gchar *file_uri, *file_mime_type;
 	const gchar *content_type;
 
@@ -130,15 +135,26 @@ calculate_file_interestingness (GFileInfo *file_info, GFile *file, GnomeDesktopT
 
 	/* Weight un-thumbnailable files or files with a valid failed thumbnail a lot less. */
 	file_uri = g_file_get_uri (file);
+#ifdef GLIB_VERSION_2_62
+	file_mtime = g_file_info_get_modification_date_time (file_info);
+	file_mtime_unix = file_mtime ? g_date_time_to_unix (file_mtime) : 0;
+#else
 	g_file_info_get_modification_time (file_info, &file_mtime);
+	file_mtime_unix = file_mtime.tv_sec;
+#endif  /* GLIB_VERSION_2_62 */
+
 	file_mime_type = g_content_type_get_mime_type (g_file_info_get_content_type (file_info));
 
-	if (gnome_desktop_thumbnail_factory_has_valid_failed_thumbnail (factory, file_uri, file_mtime.tv_sec) == TRUE ||
-	    gnome_desktop_thumbnail_factory_can_thumbnail (factory, file_uri, file_mime_type, file_mtime.tv_sec) == FALSE) {
+	if (gnome_desktop_thumbnail_factory_has_valid_failed_thumbnail (factory, file_uri, file_mtime_unix) == TRUE ||
+	    gnome_desktop_thumbnail_factory_can_thumbnail (factory, file_uri, file_mime_type, file_mtime_unix) == FALSE) {
 		DEC (20);
 	}
 
 	g_free (file_uri);
+#ifdef GLIB_VERSION_2_62
+	if (file_mtime)
+		g_date_time_unref (file_mtime);
+#endif  /* GLIB_VERSION_2_62 */
 	g_free (file_mime_type);
 
 	/* Weight image files more than audio files. This covers the case where a directory for an MP3 album contains music
@@ -318,18 +334,18 @@ done:
  * Return value: pixbuf representing the thumbnail for the given file, or %NULL on error
  */
 static GdkPixbuf *
-copy_thumbnail_from_file (GnomeDesktopThumbnailFactory *factory, const gchar *file_uri, const GTimeVal *file_mtime, const gchar *file_mime_type, GError **error)
+copy_thumbnail_from_file (GnomeDesktopThumbnailFactory *factory, const gchar *file_uri, gint64 file_mtime_unix, const gchar *file_mime_type, GError **error)
 {
 	gchar *thumbnail_path;
 	GdkPixbuf *pixbuf = NULL;
 
-	thumbnail_path = gnome_desktop_thumbnail_factory_lookup (factory, file_uri, file_mtime->tv_sec);
+	thumbnail_path = gnome_desktop_thumbnail_factory_lookup (factory, file_uri, file_mtime_unix);
 
 	g_debug ("Getting thumbnail for file ‘%s’ from path ‘%s’.", file_uri, thumbnail_path);
 
 	if (thumbnail_path == NULL) {
 		/* No thumbnail exists for the file. Try and generate one. */
-		if (gnome_desktop_thumbnail_factory_can_thumbnail (factory, file_uri, file_mime_type, file_mtime->tv_sec) == TRUE) {
+		if (gnome_desktop_thumbnail_factory_can_thumbnail (factory, file_uri, file_mime_type, file_mtime_unix) == TRUE) {
 			/* Set an environment variable to limit the recursion depth. The program can end up recursing if the most interesting child
 			 * of this directory is another directory. Although measures have been taken to avoid symlink directory loops, it’s still
 			 * possible to enter a directory loop using bind mounts. By limiting the recursion depth, this can be avoided. */
@@ -404,7 +420,12 @@ create_thumbnail_for_directory (GnomeDesktopThumbnailFactory *factory, GFile *in
 	GFile *interesting_file = NULL;
 	GFileInfo *interesting_file_info = NULL;
 	gchar *interesting_file_uri = NULL, *interesting_file_mime_type = NULL;
+#ifdef GLIB_VERSION_2_62
+	GDateTime *interesting_file_mtime = NULL;
+#else
 	GTimeVal interesting_file_mtime;
+#endif  /* GLIB_VERSION_2_62 */
+	gint64 interesting_file_mtime_unix;
 	GdkPixbuf *pixbuf = NULL;
 	GError *child_error = NULL;
 
@@ -418,12 +439,22 @@ create_thumbnail_for_directory (GnomeDesktopThumbnailFactory *factory, GFile *in
 	}
 
 	interesting_file_uri = g_file_get_uri (interesting_file);
+#ifdef GLIB_VERSION_2_62
+	interesting_file_mtime = g_file_info_get_modification_date_time (interesting_file_info);
+	interesting_file_mtime_unix = interesting_file_mtime ? g_date_time_to_unix (interesting_file_mtime) : 0;
+#else
 	g_file_info_get_modification_time (interesting_file_info, &interesting_file_mtime);
+	interesting_file_mtime_unix = interesting_file_mtime.tv_sec;
+#endif  /* GLIB_VERSION_2_62 */
 	interesting_file_mime_type = g_content_type_get_mime_type (g_file_info_get_content_type (interesting_file_info));
-	pixbuf = copy_thumbnail_from_file (factory, interesting_file_uri, &interesting_file_mtime, interesting_file_mime_type, &child_error);
+	pixbuf = copy_thumbnail_from_file (factory, interesting_file_uri, interesting_file_mtime_unix, interesting_file_mime_type, &child_error);
 
 done:
 	g_free (interesting_file_uri);
+#ifdef GLIB_VERSION_2_62
+	if (interesting_file_mtime)
+		g_date_time_unref (interesting_file_mtime);
+#endif  /* GLIB_VERSION_2_62 */
 	g_free (interesting_file_mime_type);
 	g_clear_object (&interesting_file_info);
 	g_clear_object (&interesting_file);
