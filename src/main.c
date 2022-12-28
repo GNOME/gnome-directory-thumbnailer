@@ -373,12 +373,16 @@ copy_thumbnail_from_file (GnomeDesktopThumbnailFactory *factory, const gchar *fi
 				g_setenv ("GNOME_DIRECTORY_THUMBNAILER_RECURSION_LIMIT", new_recursion_limit_str, TRUE);
 				g_free (new_recursion_limit_str);
 
+#if defined(GNOME_DESKTOP_PLATFORM_VERSION) && GNOME_DESKTOP_PLATFORM_VERSION >= 43
+				pixbuf = gnome_desktop_thumbnail_factory_generate_thumbnail (factory, file_uri, file_mime_type, NULL, error);
+#else
 				pixbuf = gnome_desktop_thumbnail_factory_generate_thumbnail (factory, file_uri, file_mime_type);
 				if (pixbuf == NULL) {
 					/* gnome-desktop doesn't set an error so we have to. */
 					g_debug ("Error generating thumbnail.");
 					g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_NOENT, _("Error generating thumbnail for file ‘%s’."), file_uri);
 				}
+#endif
 			} else {
 				g_debug ("Didn’t generate thumbnail due to hitting the recursion limit.");
 				g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_NOENT, _("Error generating thumbnail for file ‘%s’: recursion limit reached."), file_uri);
