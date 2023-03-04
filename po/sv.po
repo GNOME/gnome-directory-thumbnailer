@@ -1,17 +1,17 @@
 # Swedish translation for gnome-directory-thumbnailer.
-# Copyright (C) 2015 gnome-directory-thumbnailer's COPYRIGHT HOLDER
+# Copyright © 2015 gnome-directory-thumbnailer's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-directory-thumbnailer package.
 # Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-directory-thumbnailer master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-directory-"
-"thumbnailer&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-04-17 19:04+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-directory-"
+"thumbnailer/issues\n"
+"POT-Creation-Date: 2023-01-24 21:39+0000\n"
 "PO-Revision-Date: 2015-05-06 11:21+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
-"Language-Team: Swedish <gnome-se-list@gnome.org>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,62 +19,66 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.7.6\n"
 
-#: ../src/main.c:347
+#: ../src/main.c:383
 #, c-format
 msgid "Error generating thumbnail for file ‘%s’."
 msgstr "Fel vid skapande av miniatyrbild för filen ”%s”."
 
-#: ../src/main.c:351
+#: ../src/main.c:388
 #, c-format
 msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
-msgstr "Fel vid skapande av miniatyrbild för filen ”%s”: rekursionsgräns uppnådd."
+msgstr ""
+"Fel vid skapande av miniatyrbild för filen ”%s”: rekursionsgräns uppnådd."
 
-#: ../src/main.c:356
+#: ../src/main.c:393
 #, c-format
-msgid "Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
-msgstr "Fel vid skapande av miniatyrbild för filen ”%s”: MIME-typen ”%s” stöds inte."
+msgid ""
+"Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
+msgstr ""
+"Fel vid skapande av miniatyrbild för filen ”%s”: MIME-typen ”%s” stöds inte."
 
 #. No error, but the directory was empty.
-#: ../src/main.c:399
+#: ../src/main.c:441
 #, c-format
 msgid "Directory is empty."
 msgstr "Katalogen är tom."
 
-#: ../src/main.c:447
+#: ../src/main.c:499
 msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
-msgstr "Maximal storlek på miniatyrbilderna i bildpunkter (maximal bredd eller höjd)"
+msgstr ""
+"Maximal storlek på miniatyrbilderna i bildpunkter (maximal bredd eller höjd)"
 
-#: ../src/main.c:448
+#: ../src/main.c:500
 msgid "Show the normal folder icon as an overlay on the thumbnail"
 msgstr "Visa den normala mappikonen som ett överlägg på miniatyrbilden"
 
-#: ../src/main.c:449
+#: ../src/main.c:501
 msgid "[INPUT FILE] [OUTPUT FILE]"
 msgstr "[INDATAFIL] [UTDATAFIL]"
 
 #. Handle the command line options.
 #. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
-#: ../src/main.c:485
+#: ../src/main.c:537
 msgid "— Generate thumbnails for directories"
 msgstr "— Skapa miniatyrbilder för kataloger"
 
-#: ../src/main.c:490
+#: ../src/main.c:542
 #, c-format
 msgid "Couldn’t parse command line options: %s\n"
 msgstr "Kunde inte tolka kommandoradsflaggor: %s\n"
 
-#: ../src/main.c:527
+#: ../src/main.c:579
 #, c-format
 msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
 msgstr "Kunde inte skapa miniatyrbild för katalogen ”%s”: %s\n"
 
 #. Failed to load the icon. Shame.
-#: ../src/main.c:615
+#: ../src/main.c:677
 #, c-format
 msgid "Couldn’t load folder overlay icon: %s\n"
 msgstr "Kunde inte läsa in överläggsikon för mapp: %s\n"
 
-#: ../src/main.c:638
+#: ../src/main.c:700
 #, c-format
 msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
 msgstr "Kunde inte spara miniatyrbild till ”%s”: %s\n"
