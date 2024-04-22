@@ -1,0 +1,81 @@
+# Hindi translation for gnome-directory-thumbnailer.
+# Copyright (C) 2024 gnome-directory-thumbnailer's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-directory-thumbnailer package.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-directory-thumbnailer master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-directory-"
+"thumbnailer/issues\n"
+"POT-Creation-Date: 2024-03-15 09:38+0000\n"
+"PO-Revision-Date: 2024-04-02 22:20+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.0\n"
+
+#: ../src/main.c:383
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’."
+msgstr "फाइल '%s' के लिए थंबनेल उत्पन्न करने में त्रुटि।"
+
+#: ../src/main.c:388
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
+msgstr "फाइल '%s' के लिए थंबनेल उत्पन्न करने में त्रुटि: प्रत्यावर्तन सीमा तक पहुंच गए।"
+
+#: ../src/main.c:393
+#, c-format
+msgid ""
+"Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
+msgstr "फाइल '%s' के लिए थंबनेल उत्पन्न करने में त्रुटि: MIME प्रकार '%s' असमर्थित है।"
+
+#. No error, but the directory was empty.
+#: ../src/main.c:441
+#, c-format
+msgid "Directory is empty."
+msgstr "निर्देशिका खाली है।"
+
+#: ../src/main.c:499
+msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
+msgstr "थंबनेल का अधिकतम आकार पिक्सल में (अधिकतम चौड़ाई या ऊँचाई)"
+
+#: ../src/main.c:500
+msgid "Show the normal folder icon as an overlay on the thumbnail"
+msgstr "सामान्य फोल्डर आइकन को थंबनेल पर उपरिशायी के रूप में दिखाएं"
+
+#: ../src/main.c:501
+msgid "[INPUT FILE] [OUTPUT FILE]"
+msgstr "[इनपुट फाइल] [आउटपुट फाइल]"
+
+#. Handle the command line options.
+#. Translators: This is the command line description of what the application does. Please keep the em-dash (or an equivalent).
+#: ../src/main.c:537
+msgid "— Generate thumbnails for directories"
+msgstr "- निर्देशिकाओं के लिए थंबनेल बनाएं"
+
+#: ../src/main.c:542
+#, c-format
+msgid "Couldn’t parse command line options: %s\n"
+msgstr "कमांड लाइन विकल्पों को पार्स नहीं किया जा सका: %s\n"
+
+#: ../src/main.c:579
+#, c-format
+msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
+msgstr "निर्देशिका '%s' के लिए थंबनेल उत्पन्न नहीं किया जा सका: %s\n"
+
+#. Failed to load the icon. Shame.
+#: ../src/main.c:677
+#, c-format
+msgid "Couldn’t load folder overlay icon: %s\n"
+msgstr "फोल्डर उपरिशायी आइकन लोड नहीं हो सका: %s\n"
+
+#: ../src/main.c:700
+#, c-format
+msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
+msgstr "थंबनेल को '%s' में सहेजा नहीं जा सका: %s\n"
