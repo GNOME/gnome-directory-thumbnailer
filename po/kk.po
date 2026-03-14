@@ -1,0 +1,79 @@
+# Kazakh translation for gnome-directory-thumbnailer.
+# Copyright (C) 2026 gnome-directory-thumbnailer's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-directory-thumbnailer package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-directory-thumbnailer master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-directory-thumbnailer/issues/\n"
+"POT-Creation-Date: 2026-03-10 16:38+0000\n"
+"PO-Revision-Date: 2026-03-15 01:41+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <Kazakh>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: ../src/main.c:383
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’."
+msgstr "«%s» файлы үшін нобай жасау қатесі."
+
+#: ../src/main.c:388
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’: recursion limit reached."
+msgstr "«%s» файлы үшін нобай жасау қатесі: рекурсия шегіне жетті."
+
+#: ../src/main.c:393
+#, c-format
+msgid "Error generating thumbnail for file ‘%s’: MIME type ‘%s’ is unsupported."
+msgstr "«%s» файлы үшін нобай жасау қатесі: «%s» MIME түріне қолдау көрсетілмейді."
+
+#. No error, but the directory was empty.
+#: ../src/main.c:441
+#, c-format
+msgid "Directory is empty."
+msgstr "Бума бос."
+
+#: ../src/main.c:499
+msgid "Maximum size of the thumbnail in pixels (maximum width or height)"
+msgstr "Нобайдың пиксельдегі максималды өлшемі (максималды ені немесе биіктігі)"
+
+#: ../src/main.c:500
+msgid "Show the normal folder icon as an overlay on the thumbnail"
+msgstr "Қалыпты бума таңбашасын нобайдың үстінен көрсету"
+
+#: ../src/main.c:501
+msgid "[INPUT FILE] [OUTPUT FILE]"
+msgstr "[КІРІС ФАЙЛЫ] [ШЫҒЫС ФАЙЛЫ]"
+
+#. Handle the command line options.
+#. Translators: This is the command line description of what the application
+#. does. Please keep the em-dash (or an equivalent).
+#: ../src/main.c:537
+msgid "— Generate thumbnails for directories"
+msgstr "— Бумалар үшін нобайларды жасау"
+
+#: ../src/main.c:542
+#, c-format
+msgid "Couldn’t parse command line options: %s\n"
+msgstr "Командалық жол опцияларын талдау мүмкін емес: %s\n"
+
+#: ../src/main.c:579
+#, c-format
+msgid "Couldn’t generate thumbnail for directory ‘%s’: %s\n"
+msgstr "«%s» бумасы үшін нобайды жасау мүмкін емес: %s\n"
+
+#. Failed to load the icon. Shame.
+#: ../src/main.c:677
+#, c-format
+msgid "Couldn’t load folder overlay icon: %s\n"
+msgstr "Буманың үстеме таңбашасын жүктеу мүмкін емес: %s\n"
+
+#: ../src/main.c:700
+#, c-format
+msgid "Couldn’t save thumbnail to ‘%s’: %s\n"
+msgstr "Нобайды «%s» ішіне сақтау мүмкін емес: %s\n"
